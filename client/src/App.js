@@ -28,6 +28,11 @@ const App = () => {
     )
   };
 
+  const removeDeletedMovies = id => {
+    let filteredMovies = movies.filter(movie => movie.id !== id)
+    setMovies(filteredMovies)
+  }
+
   return (
     <>
       <SavedList list={savedList} />
@@ -46,7 +51,7 @@ const App = () => {
       <Route
         path="/movies/:id"
         render={props => {
-          return <Movie {...props} addToSavedList={addToSavedList} />;
+          return <Movie {...props} removeDeletedMovies={removeDeletedMovies} addToSavedList={addToSavedList} />;
         }}
       />
     </>
